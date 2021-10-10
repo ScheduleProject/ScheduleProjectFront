@@ -1,0 +1,10 @@
+.table-box {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.table-box {
+    width: 45vw;
+}
