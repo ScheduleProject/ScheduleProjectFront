@@ -2,8 +2,8 @@ import './FormBox.css';
 
 function FormBox() {
   return (
-    <div className="form-box" onSubmit>
-        <h1>Formulário</h1>
+    <div className="box" onSubmit>
+        <h1 className="content">Forms</h1>
         <form className="textbox">
             <input type="text" placeholder="Nome" name="name" value="" />
             <input type="text" placeholder="Email" name="email" value="" />

@@ -1,0 +1,21 @@
+h1.text {
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+.top {
+    margin: 0 auto;
+    border-style: none;
+    text-decoration: none;
+}
+
+.Menu {
+    color: #fff;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0px 15px 35px -15px rgba(148, 148, 148, 0.32);
+    border-radius: 20px;
+    margin: 1em auto 2em;
+}

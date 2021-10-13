@@ -1,13 +1,12 @@
 import React from "react";
-import './App.css';
-import FormBox from "./Components/FormBox/FormBox"
-import TableBox from "./Components/TableBox/TableBox"
+import TableBox from "../../Components/TableBox/TableBox"
+import Top from "../../Components/Top/Top"
 
 function App() {
   return (
     <div className="App">
+      <Top />
       <div className="container">
-        <FormBox />
         <TableBox />
       </div>
     </div>
