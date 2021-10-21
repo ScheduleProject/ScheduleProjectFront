@@ -1,7 +1,8 @@
 import React from "react";
 import { useParams } from "react-router";
-import FormBox from "../../Components/FormBox/FormBox"
 import Top from "../../Components/Top/Top"
+import ContactBox from "../../Components/ContactBox/ContactBox"
+
 
 function App() {
   const { id } = useParams();
@@ -9,7 +10,7 @@ function App() {
     <div className="App">
       <Top />
       <div className="container">
-        <FormBox id={id ? id : null}/>
+        <ContactBox id={id} />
       </div>
     </div>
   );

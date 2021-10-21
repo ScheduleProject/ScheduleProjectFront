@@ -1,0 +1,120 @@
+@media screen and (orientation: landscape) {
+    .info {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: #dfe7ef;
+        font-size: 1.3em;
+        line-height: 1.5;
+        width: 100%;
+        list-style-type: none;
+        text-align: left;
+    }
+    i {
+        font-size: 1em;
+        border-bottom: 2px solid #0f47bf;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    .info {
+        border: none;
+        outline: none;
+        background-color: transparent;
+        color: #dfe7ef;
+        font-size: 1em;
+        line-height: 1.5;
+        width: 100%;
+        list-style-type: none;
+        text-align: left;
+    }
+    i {
+        font-size: 1em;
+        border-bottom: 2px solid #0f47bf;
+    }
+}
+
+.icons {
+    font-size: 18px;
+    vertical-align: -8%;
+}
+
+.contWapper {
+    height: 100px;
+}
+
+.contactInfo {
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0;
+    margin: 8px 0;
+    list-style-type: none;
+    text-align: left;
+}
+
+.btnConf {
+    display: flex;
+    justify-content: center;
+}
+
+.Atualizar {
+    font-size: 21px;
+    margin: 8px;
+    color: #dfe7ef;
+}
+
+.btnAtualizar {
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border: 2px solid #0f47bf;
+    color: #dfe7ef;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 10px;
+    border-radius: 10px;
+}
+
+.btnAtualizar:hover {
+    background-color: #0f47bf;
+    color: #fff;
+    transition: .5s;
+    box-shadow: 0 0 5px #0f47bf;
+}
+
+.btnAtualizar:active {
+    background-color: #fff;
+    color: #0f47bf;
+}
+
+.Delete {
+    font-size: 23px;
+    color: #dfe7ef;
+    margin: 8px;
+}
+
+.btnDelete {
+    width: 70px;
+    height: 70px;
+    background-color: transparent;
+    border: 2px solid #bf2f0f;
+    color: #dfe7ef;
+    padding: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 12px 10px;
+    border-radius: 10px;
+}
+
+.btnDelete:hover {
+    background-color: #bf2f0f;
+    color: #fff;
+    transition: .5s;
+    box-shadow: 0 0 5px #bf2f0f;
+}
+
+.btnDelete:active {
+    background-color: #fff;
+    color: #bf2f0f;
+}
