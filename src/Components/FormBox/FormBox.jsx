@@ -15,13 +15,20 @@ const initialValue = {
     district: "",
 }
 
-function FormBox({ id }) {
+function FormBox({ id, user }) {
   const [values, setValues] = useState(id ? null: initialValue);
   const history = useHistory()
 
   useEffect(() => {
     if(id) {
-      fetch(`http://localhost:5000/contact/${id}`, {"method":"GET"})
+      fetch(`http://localhost:5000/contact/${id}`, 
+      {
+        "method":"GET",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${user}`
+      }})
         .then(res => res.json())
         .then(result => {
             setValues(result)
@@ -48,13 +55,12 @@ function FormBox({ id }) {
     fetch(url, {
             "method": method,
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+              'Authorization': `Bearer ${user}`
             },
             "body": JSON.stringify(values)
           })
           .then((response) => {
-            history.push('/')
+            history.push(`/contact/${user}`)
           });
   }
 

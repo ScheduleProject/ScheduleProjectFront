@@ -1,0 +1,18 @@
+.textbox {
+    width: 100%;
+    overflow: hidden;
+    padding: 8px 0;
+    margin: 8px 0;
+}
+
+.textbox input {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #dfe7ef;
+    font-size: 20px;
+    line-height: 2.3;
+    width: 100%;
+    float: left;
+    border-bottom: 1px solid #0f47bf;
+}

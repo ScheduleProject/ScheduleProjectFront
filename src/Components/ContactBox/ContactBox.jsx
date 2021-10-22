@@ -4,12 +4,19 @@ import { useHistory } from 'react-router';
 import { BsTrash2Fill, BsPencilFill, BsFillEnvelopeFill, BsTelephoneFill, BsInstagram, BsGeoAltFill, BsStarFill, BsStar} from "react-icons/bs";
 import './ContactBox.css';
 
-function ContactBox({ id }) {
+function ContactBox({ id , user }) {
   const [values, setValues] = useState([]);
   const history = useHistory()
 
   useEffect(() => {
-    fetch(`http://localhost:5000/contact/${id}`, {"method":"GET"})
+    fetch(`http://localhost:5000/contact/${id}`,
+    {
+      "method":"GET",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${user}`
+    }})
     .then(res => res.json())
     .then(result => setValues(result))
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -17,9 +24,11 @@ function ContactBox({ id }) {
 
   function onClickDelete() {
     fetch(`http://localhost:5000/contact/${id}`, {
-            "method": 'DELETE'
-          })
-          .then((response) => history.push('/'));
+            "method": 'DELETE',
+            headers: {
+              'Authorization': `Bearer ${user}`
+          }})
+          .then((response) => history.push(`/contact/${user}`));
   }
 
   function onClickFav() {
@@ -32,9 +41,11 @@ function ContactBox({ id }) {
     }
 
     fetch(`http://localhost:5000/contact/fav/${id}?fav=${f}`, {
-            "method": 'PUT'
-          })
-          .then((response) => history.push(`/`));
+            "method": 'PUT',
+            headers: {
+              'Authorization': `Bearer ${user}`
+          }})
+          .then((response) => history.push(`/contact/${user}`));
   }
 
   return (
@@ -59,7 +70,7 @@ function ContactBox({ id }) {
           }
         </button>
 
-        <Link to={`/edit/${id}`}>
+        <Link to={`/edit/${user}/${id}`}>
           <button
           className="btnAtualizar"
           value="EditContact">
