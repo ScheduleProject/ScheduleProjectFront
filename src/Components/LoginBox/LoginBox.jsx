@@ -23,7 +23,7 @@ function LoginBox() {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    fetch(`http://localhost:5000/login`, {
+    fetch(`https://contact-schedule-database.herokuapp.com/login`, {
             "method": "POST",
             headers: {
               'Accept': 'application/json',
@@ -56,7 +56,7 @@ function LoginBox() {
           <button 
           type="submit"
           className="btn">
-              Salvar
+              Submit
           </button>
       </form>
       {

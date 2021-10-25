@@ -1,16 +1,19 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { BsStarFill, BsPlusLg } from "react-icons/bs";
+import { BsStarFill, BsPlusLg, BsArrowClockwise } from "react-icons/bs";
 import FilterBox from './FilterBox/FilterBox';
 import './TableBox.css';
 
 function TableBox({ user }) {
   const [error, setError] = useState(null);
   const [items, setItems] = useState([]);
+  const [isLoaded, setIsLoaded] = useState(false);
   const [filter, setFilter] = useState('asc')
-
+  
+  if (error) { console.log(error) }
+  
   useEffect(() => {
-    fetch(`http://localhost:5000/contact?order=asc`, 
+    fetch(`https://contact-schedule-database.herokuapp.com/contact?order=asc`, 
     {
       "method":"GET",
       headers: {
@@ -22,6 +25,7 @@ function TableBox({ user }) {
       .then(result => {
           setItems(result);
           setFilter('asc');
+          setIsLoaded(true)
         },
         (error) => {
           setError(error);
@@ -42,7 +46,7 @@ function TableBox({ user }) {
 
     setFilter(filterValue);
 
-    fetch(`http://localhost:5000/contact?order=${filterValue}`, 
+    fetch(`https://contact-schedule-database.herokuapp.com/contact?order=${filterValue}`, 
     {
       "method":"GET",
       headers: {
@@ -70,18 +74,19 @@ function TableBox({ user }) {
       <h1 className="content">Your Contacts</h1>
       <div className='table'>
         <ul className="list">
-          {error ? (
-            <div>Error: {error.message}</div>
-          ) : (
-            items.map(item => (
-              <li className="tuple" key={item.id}>
-                <Link className="tupleLink" to={`/view/${user}/${item.id}`}>
-                  {item.name}
-                </Link>
-                {item.fav ? (<BsStarFill className="fav"/>): null}
-              </li>
-            ))
-          )}
+          {
+            !isLoaded ? (<div> <BsArrowClockwise className="loading"/> </div>) : 
+            ( 
+              items.map(item => (
+                <li className="tuple" key={item.id}>
+                  <Link className="tupleLink" to={`/view/${user}/${item.id}`}>
+                    {item.name}
+                  </Link>
+                  {item.fav ? (<BsStarFill className="fav"/>): null}
+                </li>
+              ))
+            )
+          }
         </ul>
       </div>
 

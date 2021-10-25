@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+import { BsReplyFill } from "react-icons/bs";
 import './NewUserBox.css';
 
 const initialValue = {
@@ -21,7 +23,7 @@ function LoginBox() {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    fetch(`http://localhost:5000/user`, {
+    fetch(`https://contact-schedule-database.herokuapp.com/user`, {
             "method": "POST",
             headers: {
               'Accept': 'application/json',
@@ -44,6 +46,11 @@ function LoginBox() {
 
   return (
     <div className="box">
+      <Link to={`/`} className="linkLogin">
+        <button className="btnLogin">
+          <BsReplyFill className="logoFilter"/>
+        </button>
+      </Link>
       <h1 className="content">New User</h1>
       <form className="textbox" onSubmit={onSubmit}>
           <input type="text" placeholder="User" name="name" onChange={onChange} />
@@ -51,7 +58,7 @@ function LoginBox() {
           <button 
           type="submit"
           className="btn">
-              Salvar
+              Create
           </button> 
       </form>
       {

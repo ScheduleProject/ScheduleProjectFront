@@ -98,3 +98,14 @@ body {
     background-color: #062059;
     color: #0f47bf;
 }
+
+.loading {
+    font-size: 80px;
+    animation: is-rotating 1.5s infinite;
+}
+
+@keyframes is-rotating {
+    to {
+        transform: rotate(1turn);
+    }
+}
