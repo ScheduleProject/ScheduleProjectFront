@@ -23,7 +23,7 @@ function LoginBox() {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    fetch(`https://contact-schedule-database.herokuapp.com/user`, {
+    fetch(`${process.env.REACT_APP_API_URL}/user`, {
             "method": "POST",
             headers: {
               'Accept': 'application/json',

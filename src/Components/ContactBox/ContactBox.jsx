@@ -11,7 +11,7 @@ function ContactBox({ id , user }) {
   const fullAddress = `${values.address}, ${values.address_number} - ${values.district}, ${values.state}`
 
   useEffect(() => {
-    fetch(`https://contact-schedule-database.herokuapp.com/contact/${id}`,
+    fetch(`${process.env.REACT_APP_API_URL}/contact/${id}`,
     {
       "method":"GET",
       headers: {
@@ -28,7 +28,7 @@ function ContactBox({ id , user }) {
   }, []);
 
   function onClickDelete() {
-    fetch(`https://contact-schedule-database.herokuapp.com/contact/${id}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/contact/${id}`, {
             "method": 'DELETE',
             headers: {
               'Authorization': `Bearer ${user}`
@@ -45,7 +45,7 @@ function ContactBox({ id , user }) {
       f = true
     }
 
-    fetch(`https://contact-schedule-database.herokuapp.com/contact/fav/${id}?fav=${f}`, {
+    fetch(`${process.env.REACT_APP_API_URL}/contact/fav/${id}?fav=${f}`, {
             "method": 'PUT',
             headers: {
               'Authorization': `Bearer ${user}`

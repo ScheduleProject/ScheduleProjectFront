@@ -21,7 +21,7 @@ function FormBox({ id, user }) {
   const history = useHistory()
   useEffect(() => {
     if(id) {
-      fetch(`https://contact-schedule-database.herokuapp.com/contact/${id}`, 
+      fetch(`${process.env.REACT_APP_API_URL}/contact/${id}`, 
       {
         "method":"GET",
         headers: {
@@ -49,8 +49,8 @@ function FormBox({ id, user }) {
 
     const method = id ? 'PUT' : 'POST' 
     const url = id 
-      ? `https://contact-schedule-database.herokuapp.com/contact/${id}`
-      : 'https://contact-schedule-database.herokuapp.com/contact'
+      ? `${process.env.REACT_APP_API_URL}/contact/${id}`
+      : `${process.env.REACT_APP_API_URL}/contact`
 
     fetch(url, {
             "method": method,

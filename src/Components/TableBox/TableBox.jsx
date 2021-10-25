@@ -13,7 +13,7 @@ function TableBox({ user }) {
   if (error) { console.log(error) }
   
   useEffect(() => {
-    fetch(`https://contact-schedule-database.herokuapp.com/contact?order=asc`, 
+    fetch(`${process.env.REACT_APP_API_URL}/contact?order=asc`, 
     {
       "method":"GET",
       headers: {
@@ -46,7 +46,7 @@ function TableBox({ user }) {
 
     setFilter(filterValue);
 
-    fetch(`https://contact-schedule-database.herokuapp.com/contact?order=${filterValue}`, 
+    fetch(`${process.env.REACT_APP_API_URL}/contact?order=${filterValue}`, 
     {
       "method":"GET",
       headers: {
