@@ -27,6 +27,7 @@ function TableBox({ user }) {
           setError(error);
         }
       )
+      // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   function onClickFilter(filterValue) {

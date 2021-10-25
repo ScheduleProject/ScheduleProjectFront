@@ -16,3 +16,41 @@
     float: left;
     border-bottom: 1px solid #0f47bf;
 }
+
+.errorText {
+    color: #bf2f0f;
+}
+
+.linkNew {
+    position: absolute;
+    top: 30px;
+    right: -20px;
+}
+
+.btnNewUser {
+    border: none;
+    outline: none;
+    background-color: #0f47bf;
+    color: #dfe7ef;
+    border-radius: 100%;
+    font-size: 30px;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+}
+
+.btnNewUser:hover {
+    background-color: #0f47bf;
+    color: #fff;
+    transition: .5s;
+    box-shadow: 0 0 5px #0f47bf;
+}
+
+.btnNewUser:active {
+    background-color: #062059;
+    color: #0f47bf;
+}
+
+.logoFilter {
+    vertical-align: -7%;
+}

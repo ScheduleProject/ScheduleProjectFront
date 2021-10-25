@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router';
-import { BsPersonPlusFill } from "react-icons/bs";
-import { Link } from 'react-router-dom';
-import './LoginBox.css';
+import './NewUserBox.css';
 
 const initialValue = {
     name: "",
@@ -23,7 +21,7 @@ function LoginBox() {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    fetch(`http://localhost:5000/login`, {
+    fetch(`http://localhost:5000/user`, {
             "method": "POST",
             headers: {
               'Accept': 'application/json',
@@ -31,25 +29,22 @@ function LoginBox() {
             },
             "body": JSON.stringify(values)
           })
-          .then(res => res.json())
-          .then(result => {
-            if (result.token){
-              history.push(`/contact/${result.token}`);
-            } else {
-              setError(result)
+          .then(res => 
+            {
+                if (res.status === 201){
+                history.push(`/`);
+                } else {
+                    res.json().then(data => {
+                        setError(data)
+                    })
+                }
             }
-          }
-        );
+          );
   }
 
   return (
     <div className="box">
-      <Link to={`/newUser`} className="linkNew">
-        <button className="btnNewUser">
-          <BsPersonPlusFill className="logoFilter"/>
-        </button>
-      </Link>
-      <h1 className="content">Login</h1>
+      <h1 className="content">New User</h1>
       <form className="textbox" onSubmit={onSubmit}>
           <input type="text" placeholder="User" name="name" onChange={onChange} />
           <input type="password" placeholder="Password" name="password" onChange={onChange} />
@@ -57,7 +52,7 @@ function LoginBox() {
           type="submit"
           className="btn">
               Salvar
-          </button>
+          </button> 
       </form>
       {
         error.error? (
