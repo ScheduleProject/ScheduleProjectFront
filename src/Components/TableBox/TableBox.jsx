@@ -19,7 +19,7 @@ function TableBox({ user }) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user}`
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
     }})
       .then(res => res.json())
       .then(result => {
@@ -52,7 +52,7 @@ function TableBox({ user }) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user}`
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
     }})
       .then(res => res.json())
       .then(result => {

@@ -17,7 +17,7 @@ function ContactBox({ id , user }) {
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${user}`
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
     }})
     .then(res => res.json())
     .then(result => {
@@ -31,7 +31,7 @@ function ContactBox({ id , user }) {
     fetch(`${process.env.REACT_APP_API_URL}/contact/${id}`, {
             "method": 'DELETE',
             headers: {
-              'Authorization': `Bearer ${user}`
+              'Authorization': `Bearer ${localStorage.getItem("token")}`
           }})
           .then((response) => history.push(`/contact/${user}`));
   }
@@ -48,7 +48,7 @@ function ContactBox({ id , user }) {
     fetch(`${process.env.REACT_APP_API_URL}/contact/fav/${id}?fav=${f}`, {
             "method": 'PUT',
             headers: {
-              'Authorization': `Bearer ${user}`
+              'Authorization': `Bearer ${localStorage.getItem("token")}`
           }})
           .then((response) => history.push(`/contact/${user}`));
   }

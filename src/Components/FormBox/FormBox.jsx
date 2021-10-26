@@ -27,7 +27,7 @@ function FormBox({ id, user }) {
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${user}`
+          'Authorization': `Bearer ${localStorage.getItem("token")}`
       }})
         .then(res => res.json())
         .then(result => {
@@ -55,7 +55,7 @@ function FormBox({ id, user }) {
     fetch(url, {
             "method": method,
             headers: {
-              'Authorization': `Bearer ${user}`,
+              'Authorization': `Bearer ${localStorage.getItem("token")}`,
               'Accept': 'application/json',
               'Content-Type': 'application/json',
             },

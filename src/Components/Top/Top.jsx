@@ -4,10 +4,16 @@ import { BsReplyFill } from "react-icons/bs";
 
 
 function Top({ user }) {
+
+  function onClickLogOut(){
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  }
+
   return (
     <nav className="Menu">
-      <Link to={`/`} className="linkLogOut">
-        <button className="btnLogOut">
+      <Link to={`/`} className="linkLogOut"> 
+        <button className="btnLogOut" onClick={onClickLogOut}>
           <BsReplyFill className="logoFilter"/>
         </button>
       </Link>

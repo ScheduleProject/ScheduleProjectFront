@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import './index.css';
 import Contatos from './Pages/Contatos/App';
 import Formularios from './Pages/Formularios/App';
@@ -10,16 +10,25 @@ import NewUser from './Pages/NewUser/App'
 
 const Pagina404 = () => (<div><h1>Página 404</h1></div>);
 
+function CustomRoute({ isPrivate, ...rest}) {
+
+    if(isPrivate && !localStorage.getItem("token")){
+        return <Redirect to="/"/>;
+    }
+
+    return <Route {...rest}/>;
+}
+
 ReactDOM.render(
     <BrowserRouter>
         <Switch>
-            <Route path="/" component={Login} exact/>
-            <Route path="/newUser" component={NewUser} exact/>
-            <Route path="/contact/:user" component={Contatos} exact/>
-            <Route path="/create/:user" component={Formularios} exact/>
-            <Route path="/edit/:user/:id" component={Formularios} exact/>
-            <Route path="/view/:user/:id" component={Contato} exact/>
-            <Route component={Pagina404} />
+            <CustomRoute path="/" component={Login} exact/>
+            <CustomRoute path="/newUser" component={NewUser} exact/>
+            <CustomRoute path="/contact/:user" component={Contatos} exact isPrivate/>
+            <CustomRoute path="/create/:user" component={Formularios} exact isPrivate/>
+            <CustomRoute path="/edit/:user/:id" component={Formularios} exact isPrivate/>
+            <CustomRoute path="/view/:user/:id" component={Contato} exact isPrivate/>
+            <CustomRoute component={Pagina404} />
         </Switch>
     </BrowserRouter>,
     document.getElementById('root'),

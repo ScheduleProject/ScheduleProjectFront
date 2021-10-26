@@ -4,6 +4,7 @@ import { BsPersonPlusFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
 import './LoginBox.css';
 
+
 const initialValue = {
     name: "",
     password: "",
@@ -11,8 +12,8 @@ const initialValue = {
 
 function LoginBox() {
   const [values, setValues] = useState(initialValue);
-  const [error, setError] = useState([])
-  const history = useHistory()
+  const [error, setError] = useState([]);
+  const history = useHistory();
 
   function onChange(ev) {
     const { name, value } = ev.target;
@@ -34,7 +35,9 @@ function LoginBox() {
           .then(res => res.json())
           .then(result => {
             if (result.token){
-              history.push(`/contact/${result.token}`);
+              localStorage.setItem("token",result.token)
+              localStorage.setItem("user",result.id)
+              history.push(`/contact/${result.id}`);
             } else {
               setError(result)
             }
