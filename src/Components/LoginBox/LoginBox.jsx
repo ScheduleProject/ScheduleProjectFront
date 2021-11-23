@@ -25,15 +25,14 @@ function LoginBox() {
   function onSubmit(ev) {
     ev.preventDefault();
 
-    const user_name = btoa(values.name);
-    const user_password = btoa(values.password);
+    const user_credencial = btoa(values.name + ":" + values.password);
 
     fetch(`${process.env.REACT_APP_API_URL}/login`, {
             "method": "POST",
             headers: {
               'Accept': 'application/json',
               'Content-Type': 'application/json',
-              'Authorization': user_name + ":" + user_password
+              'Authorization': "Basic " + user_credencial
             }
           })
           .then(res => res.json())
