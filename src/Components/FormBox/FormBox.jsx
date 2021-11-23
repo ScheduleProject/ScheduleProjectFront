@@ -19,6 +19,10 @@ const initialValue = {
 function FormBox({ id, user }) {
   const [values, setValues] = useState(id ? null: initialValue);
   const history = useHistory()
+  const instagramFormatMask = {
+    'i': '[A-Za-z0-9._]'
+  };
+
   useEffect(() => {
     if(id) {
       fetch(`${process.env.REACT_APP_API_URL}/contact/${id}`, 
@@ -103,7 +107,7 @@ function FormBox({ id, user }) {
                 <input type="text" placeholder="Name" name="name" onChange={onChange} value={values.name} />
                 <input type="text" placeholder="Email" name="email" onChange={onChange} value={values.email} />
                 <InputMask mask="(99)99999-9999" type="text" placeholder="Cellphone" name="cellphone" onChange={onChange} value={values.cellphone} />
-                <InputMask mask="@****************************" maskChar={null} type="text" placeholder="Instagram" name="instagram" onChange={onChange} value={values.instagram} />
+                <InputMask mask="@iiiiiiiiiiiiiiiiiiiiiiiiiiii" formatChars={instagramFormatMask} maskChar={null} type="text" placeholder="Instagram" name="instagram" onChange={onChange} value={values.instagram} />
                 <InputMask mask="99999-999" type="text" placeholder="Zip code" name="zip_code" onBlur={zipEffect} onChange={onChange} value={values.zip_code} />
                 <input type="text" placeholder="Address" name="address" onChange={onChange} value={values.address} />
                 <input type="text" placeholder="Address number" name="address_number" onChange={onChange} value={values.address_number} />

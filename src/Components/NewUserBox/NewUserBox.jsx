@@ -22,14 +22,17 @@ function LoginBox() {
 
   function onSubmit(ev) {
     ev.preventDefault();
-
+    
+    const user_name = btoa(values.name);
+    const user_password = btoa(values.password);
+    
     fetch(`${process.env.REACT_APP_API_URL}/user`, {
             "method": "POST",
             headers: {
               'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            "body": JSON.stringify(values)
+              'Content-Type': 'application/json',
+              'Authorization': user_name + ":" + user_password
+            }
           })
           .then(res => 
             {
@@ -45,7 +48,7 @@ function LoginBox() {
   }
 
   return (
-    <div className="box">
+    <div className="box_out">
       <Link to={`/`} className="linkLogin">
         <button className="btnLogin">
           <BsReplyFill className="logoFilter"/>

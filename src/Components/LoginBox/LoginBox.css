@@ -1,3 +1,17 @@
+.box_out {
+    color: #fff;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    border-radius: 20px;
+    width: 500px;
+    box-shadow: 0px 10px 40px 0px rgba(76, 70, 124, 0.5);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
 .textbox {
     width: 100%;
     overflow: hidden;
@@ -53,4 +67,15 @@
 
 .logoFilter {
     vertical-align: -7%;
+}
+
+@media screen and (orientation: portrait) {
+    .linkNew {
+        position: absolute;
+        top: 25px;
+        right: -8px;
+    }
+    .box_out {
+        margin-top: 30vw;
+    }
 }

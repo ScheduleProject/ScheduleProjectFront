@@ -17,6 +17,28 @@ html {
     text-align: center;
 }
 
+@media screen and (orientation: landscape) {
+    h1.content {
+        font-size: 40px;
+        border-bottom: 6px solid #0f47bf;
+        margin-bottom: 10px;
+        margin-top: -10px;
+        padding: 8px 0;
+        color: #dfe7ef;
+    }
+}
+
+@media screen and (orientation: portrait) {
+    h1.content {
+        font-size: 30px;
+        border-bottom: 6px solid #0f47bf;
+        margin-bottom: 10px;
+        margin-top: -10px;
+        padding: 8px 0;
+        color: #dfe7ef;
+    }
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -51,28 +73,6 @@ body {
     display: flex;
     flex-direction: column;
     position: relative;
-}
-
-@media screen and (orientation: landscape) {
-    h1.content {
-        font-size: 40px;
-        border-bottom: 6px solid #0f47bf;
-        margin-bottom: 10px;
-        margin-top: -10px;
-        padding: 8px 0;
-        color: #dfe7ef;
-    }
-}
-
-@media screen and (orientation: portrait) {
-    h1.content {
-        font-size: 30px;
-        border-bottom: 6px solid #0f47bf;
-        margin-bottom: 10px;
-        margin-top: -10px;
-        padding: 8px 0;
-        color: #dfe7ef;
-    }
 }
 
 .btn {

@@ -107,3 +107,11 @@
     .logoFilter {
         vertical-align: -7%;
     }
+    
+    @media screen and (orientation: portrait) {
+        .filter {
+            position: absolute;
+            top: 120px;
+            right: -8px;
+        }
+    }

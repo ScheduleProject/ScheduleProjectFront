@@ -55,3 +55,11 @@ h1.text {
 .logoFilter {
     vertical-align: -7%;
 }
+
+@media screen and (orientation: portrait) {
+    .linkLogOut {
+        position: absolute;
+        top: 9.5px;
+        left: -25px;
+    }
+}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router';
 import { BsPersonPlusFill } from "react-icons/bs";
 import { Link } from 'react-router-dom';
+import verifyToken from '../../Controller/jwtReader'
 import './LoginBox.css';
 
 
@@ -24,20 +25,22 @@ function LoginBox() {
   function onSubmit(ev) {
     ev.preventDefault();
 
+    const user_name = btoa(values.name);
+    const user_password = btoa(values.password);
+
     fetch(`${process.env.REACT_APP_API_URL}/login`, {
             "method": "POST",
             headers: {
               'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            "body": JSON.stringify(values)
+              'Content-Type': 'application/json',
+              'Authorization': user_name + ":" + user_password
+            }
           })
           .then(res => res.json())
           .then(result => {
             if (result.token){
               localStorage.setItem("token",result.token)
-              localStorage.setItem("user",result.id)
-              history.push(`/contact/${result.id}`);
+              history.push(`/contact/${verifyToken(localStorage.getItem("token")).id}`);
             } else {
               setError(result)
             }
@@ -46,7 +49,7 @@ function LoginBox() {
   }
 
   return (
-    <div className="box">
+    <div className="box_out">
       <Link to={`/newUser`} className="linkNew">
         <button className="btnNewUser">
           <BsPersonPlusFill className="logoFilter"/>

@@ -9,9 +9,10 @@ function TableBox({ user }) {
   const [items, setItems] = useState([]);
   const [isLoaded, setIsLoaded] = useState(false);
   const [filter, setFilter] = useState('asc')
-  
+  //verifyToken(localStorage.getItem("token"))
+
   if (error) { console.log(error) }
-  
+
   useEffect(() => {
     fetch(`${process.env.REACT_APP_API_URL}/contact?order=asc`, 
     {
